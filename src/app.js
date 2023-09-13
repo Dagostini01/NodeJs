@@ -16,6 +16,7 @@ function buscaLivro(id){
 app.get("/", (req, res) => {
     res.status(200).send("Curso de Node.js");
 })
+
 //pega livro
 app.get("/livros", (req, res) => {
     res.status(200).json(livros)
