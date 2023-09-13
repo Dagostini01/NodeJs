@@ -16,19 +16,29 @@ function buscaLivro(id){
 app.get("/", (req, res) => {
     res.status(200).send("Curso de Node.js");
 })
-
+//pega livro
 app.get("/livros", (req, res) => {
     res.status(200).json(livros)
 })
 
+//adiciona livro
 app.post("/livros", (req, res) => {
     livros.push(req.body)
     res.status(201).send("Livro cadastrado com sucesso")
 })
 
+//pega livro pelo id
 app.get("/livros/:id", (req, res) => {
     const index = buscaLivro(req.params.id)
     res.status(200).json(livros[index])
 })
+
+//edita o livro pelo id
+app.put("/livros/:id", (req, res) => {
+    const index = buscaLivro(req.params.id)
+    livros[index].titulo = req.body.titulo
+    res.status(200).json(livros)
+})
+
 
 export default app;
